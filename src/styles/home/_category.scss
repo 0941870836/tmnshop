@@ -1,0 +1,39 @@
+.category {
+  padding: 40px 100px;
+  position: relative;
+  .wallpaper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .title {
+    text-align: center;
+    &::before,
+    &::after {
+      display: inline-block;
+      vertical-align: middle;
+      height: 1px;
+      width: 300px;
+      margin-right: 15px;
+      content: "";
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
+    }
+    &::after {
+      margin-left: 15px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent);
+    }
+  }
+  .container {
+    margin-top: 80px;
+  }
+  .items-category {
+    margin-top: 20px;
+    transition: all 0.25s;
+    cursor: "pointer";
+    &:hover {
+      color: blue;
+    }
+  }
+}

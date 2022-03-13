@@ -1,0 +1,21 @@
+.list-product {
+  padding: 40px 100px;
+  position: relative;
+  .title {
+    text-align: center;
+    &::before,
+    &::after {
+      display: inline-block;
+      vertical-align: middle;
+      height: 1px;
+      width: 300px;
+      margin-right: 15px;
+      content: "";
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
+    }
+    &::after {
+      margin-left: 15px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent);
+    }
+  }
+}

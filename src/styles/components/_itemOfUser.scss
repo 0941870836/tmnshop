@@ -1,0 +1,69 @@
+.item-course-of-user {
+  padding: 10px 20px;
+  background: white;
+  margin: 20px 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  p {
+    width: 70px;
+  }
+  .empty {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .content-left {
+    margin: 10px 15px;
+    width: 80px;
+    .fee {
+      font-weight: bold;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .sale-fee {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 14px;
+    }
+    img {
+      width: 80px;
+      height: 80px;
+      background: center cover;
+      margin-left: 15px;
+    }
+    .mct-item-course-of-user {
+      margin-left: 15px;
+      p {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+  .content-right {
+    .count {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    p {
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+    }
+    .fee-total {
+      color: red;
+      text-align: center;
+    }
+    .trash {
+      color: rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      margin-bottom: 15px;
+      &:hover {
+        color: rgba(255, 0, 0, 0.5);
+      }
+      margin-left: 50px;
+    }
+  }
+}

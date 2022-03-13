@@ -1,0 +1,51 @@
+.stepbuyproduct {
+  padding: 40px 100px;
+  .content {
+    text-align: center;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .line {
+      width: 200px;
+      height: 1px;
+      border-top: 1px dotted #0000006e;
+      padding-bottom: 40px;
+    }
+    .step-group {
+      div {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        line-height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.24);
+        margin-bottom: 20px;
+      }
+      p {
+        margin-bottom: 0;
+        line-height: 17px;
+      }
+      &:nth-child(3) {
+        div {
+          color: black;
+        }
+      }
+      &:first-child {
+        div {
+          background: white;
+        }
+      }
+      &:last-child {
+        div {
+          color: black;
+        }
+      }
+    }
+  }
+}
