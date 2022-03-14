@@ -9,10 +9,10 @@ export default function Intro() {
       <div className="content">
         <div>
           <h3 className="head-title">
-            Getting started with <b>TMN SHOP</b>
+            Getting started with <b>ITERN-SHOP</b>
           </h3>
           <p className="head-subtitle">
-            TMN Shop very happy when your visit to page
+            ITERN-SHOP very happy when your visit to page
           </p>
         </div>
       </div>
