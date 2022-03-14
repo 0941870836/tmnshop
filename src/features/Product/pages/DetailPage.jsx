@@ -22,10 +22,12 @@ const useStyles = makeStyles((theme) => ({
     width: "400px",
     padding: theme.spacing(1.5),
     borderRight: `1px solid ${theme.palette.grey[300]}`,
+    marginTop: "100px",
   },
   right: {
     flex: "1 1 0",
     padding: theme.spacing(1.5),
+    marginTop: "100px",
   },
 
   loading: {

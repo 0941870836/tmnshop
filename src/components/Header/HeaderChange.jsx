@@ -15,11 +15,15 @@ import Login from "features/Auth/components/Login";
 import Register from "features/Auth/components/Register";
 import { logout } from "features/Auth/components/userSlice";
 import { cartItemsCountSelector } from "features/Cart/selectors";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    zIndex: 999,
+    marginBottom: "20px",
+  },
   closeButton: {
     position: "absolute",
     top: theme.spacing(1),
@@ -67,26 +71,6 @@ export default function Header() {
   const [mode, setMode] = useState(MODE.LOGIN);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const [navBackground, setNavBackground] = useState("navBarTransparent");
-
-  const navRef = React.useRef();
-  navRef.current = navBackground;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const show = window.scrollY > 0;
-      if (show) {
-        setNavBackground("navBarSolid");
-      } else {
-        setNavBackground("navBarTransparent");
-      }
-    };
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -113,7 +97,7 @@ export default function Header() {
   };
 
   return (
-    <AppBar className={classes[navRef.current]}>
+    <AppBar className={classes.root}>
       <nav className="navbar navbar-expand-sm">
         <NavLink className="navbar-brand" to="/">
           <h1>INTERN-SHOP</h1>
