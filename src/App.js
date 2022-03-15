@@ -1,4 +1,5 @@
 import Footer from 'components/Footer/Footer';
+import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
 import ProductFuture from 'features/Product';
 import Home from 'features/Product/pages/Home';
 import PageNotFound from 'features/Product/pages/PageNotFound';
@@ -13,6 +14,7 @@ function App() {
 
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <div className='app'>
                 <header className='App-header'>
                     <Header />
