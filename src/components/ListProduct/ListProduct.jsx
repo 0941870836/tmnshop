@@ -4,6 +4,7 @@ import ProductSkeletonList from "features/Product/components/ProductSkeletonList
 import queryString from "query-string";
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { DoubleArrow } from "@material-ui/icons";
 
 function Listproduct() {
   const location = useLocation();
@@ -45,6 +46,14 @@ function Listproduct() {
           ) : (
             <ProductListHtml data={productList} />
           )}
+        </div>
+        <div className="product-all">
+          <a href="/products" class="btn-icon">
+            <span class="btn-content">XEM TẤT CẢ</span>
+            <span class="icon">
+              <DoubleArrow class="arrow" />
+            </span>
+          </a>
         </div>
       </div>
     </section>
