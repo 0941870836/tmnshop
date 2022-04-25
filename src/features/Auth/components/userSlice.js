@@ -6,11 +6,13 @@ import StorageKeys from "constants/storage-key";
 export const register = createAsyncThunk(
     'user/register',
     async (payload) => {
+
         //CALL API TO REGISTER
         const data = await userApi.register(payload);
 
         //save data to local stage
         localStorage.setItem(StorageKeys.TOKEN, data.jwt);
+
         localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
 
         return data.user;
@@ -20,11 +22,12 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk(
     'user/login',
     async (payload) => {
+
         //CALL API TO REGISTER
         const data = await userApi.login(payload);
-
         //save data to local stage
         localStorage.setItem(StorageKeys.TOKEN, data.jwt);
+
         localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
 
         return data.user;
@@ -47,9 +50,6 @@ const userSlice = createSlice({
         }
     },
     extraReducers: {
-        [register.fulfilled]: (state, action) => {
-            state.current = action.payload;
-        },
 
         [login.fulfilled]: (state, action) => {
             state.current = action.payload;

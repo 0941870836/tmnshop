@@ -1,0 +1,18 @@
+.btn--blue {
+	@include button(white, $color-pr-2, white, $color-pr-1);
+}
+.btn--white {
+	@include button(black, rgba(255, 255, 255, 0.8), black, white);
+}
+.btn--black {
+	@include button(white, rgba(0, 0, 0, 0.6), white, rgba(0, 0, 0, 0.8));
+}
+.btn--purple {
+	@include button(white, $color-se-2, white, $color-se-1);
+}
+.btn--green {
+	@include button(white, #4caf50, white, #4caf50);
+}
+.btn--red {
+	@include button(white, #d32f2f, white, #d32f2f);
+}

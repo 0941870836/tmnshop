@@ -1,32 +1,45 @@
 import { unwrapResult } from "@reduxjs/toolkit";
-import { useSnackbar } from "notistack";
-import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 import LoginForm from "../LoginForm";
 import { login } from "../userSlice";
 
-Login.propTypes = {
-  closeDialog: PropTypes.func,
+const successApi = (strSuccess) => {
+  return Swal.fire({
+    position: "center",
+    icon: "success",
+    html: `<h3 style="color:#a5dc86"><b>SUCCESS!</b></h3><b>${strSuccess}</b>`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+const errorApi = (err) => {
+  return Swal.fire({
+    position: "center",
+    icon: "error",
+    html: `<h3 style="color:#f27474"><b>ERROR!</b></h3><b>${err}</b>`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
 };
 
 function Login(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (values) => {
     try {
       const action = login(values);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
-
-      const { closeDialog } = props;
-      if (closeDialog) {
-        closeDialog();
-      }
-    } catch (error) {
-      console.log("Failed", error);
-      enqueueSnackbar(error.message, { variant: "error" });
+      successApi("ĐĂNG NHẬP THÀNH CÔNG.");
+      history.push("/");
+    } catch (err) {
+      errorApi("ĐĂNG NHẬP THẤT BẠI.");
+      history.push("/sign-in");
     }
   };
 

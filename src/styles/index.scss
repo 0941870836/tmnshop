@@ -1,3 +1,7 @@
+@import "./helpers/variables";
+
+@import "./helpers/mixin";
+
 @import "./components/header";
 
 @import "./components/footer";
@@ -23,3 +27,9 @@
 @import "./home/product";
 
 @import "./components/headerChange";
+
+@import "./form/Form.scss";
+
+@import "./common/common";
+
+@import "./common/button";

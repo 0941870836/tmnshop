@@ -116,7 +116,7 @@ export default function Header() {
     <AppBar className={classes[navRef.current]}>
       <nav className="navbar navbar-expand-sm">
         <NavLink className="navbar-brand" to="/">
-          <h1>INTERN-SHOP</h1>
+          <h1>TMN-SHOP</h1>
         </NavLink>
         <button
           className="navbar-toggler d-lg-none"
@@ -151,7 +151,7 @@ export default function Header() {
         <div className="lg">
           {!isLoggedIn && (
             <Button color="inherit" onClick={handleClickOpen}>
-              Login
+              SIGN IN
             </Button>
           )}
 

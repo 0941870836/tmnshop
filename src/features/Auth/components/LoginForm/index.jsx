@@ -1,18 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import InputField from "../../../../components/form-control/InputField";
-import PasswordField from "../../../../components/form-control/PasswordField";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import {
   Avatar,
   Button,
-  Typography,
-  makeStyles,
+  Checkbox,
   LinearProgress,
+  makeStyles,
 } from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
+import PropTypes from "prop-types";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { NavLink } from "react-router-dom";
+import * as yup from "yup";
+import InputField from "../../../../components/form-control/InputField";
+import PasswordField from "../../../../components/form-control/PasswordField";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,26 +77,49 @@ function LoginForm(props) {
   return (
     <div className={classes.root}>
       {isSubmitting && <LinearProgress className={classes.progress} />}
-      <Avatar className={classes.avatar}>
-        <LockOutlined></LockOutlined>
-      </Avatar>
-      <Typography className={classes.title} component="h3" variant="h5">
-        SIGN IN
-      </Typography>
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <InputField name="identifier" label="Email" form={form} />
-        <PasswordField name="password" label="Password" form={form} />
-        <Button
-          disable={isSubmitting}
-          type="submit"
-          className={classes.submit}
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          SIGN IN
-        </Button>
-      </form>
+      <Avatar className={classes.avatar}></Avatar>
+      <section className="form">
+        <img src="../img/bg-01.jpg" />
+        <div className="main-content">
+          <form onSubmit={form.handleSubmit(handleSubmit)} to="/">
+            <h4>SIGN IN</h4>
+            <div>
+              <InputField
+                id="standard-basic"
+                name="identifier"
+                label="Email"
+                margin="normal"
+                form={form}
+              />
+            </div>
+            <PasswordField name="password" label="Password" form={form} />
+
+            <div className="mt-1">
+              <Checkbox
+                value="checkedB"
+                color="primary"
+                inputProps={{
+                  "aria-label": "secondary checkbox",
+                }}
+              />
+              <span>Ghi nhớ tài khoản</span>
+            </div>
+            <Button
+              disable={isSubmitting}
+              className="pulse"
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+            >
+              SIGN IN
+            </Button>
+            <NavLink className="go-to-form-another" to="/sign-up">
+              Bạn chưa có tài khoản?
+            </NavLink>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }

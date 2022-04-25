@@ -24,7 +24,7 @@ const productApi = {
             pagination: {
                 page: params._page,
                 limit: params._limit,
-                total: count
+                total: count,
             }
         }
     },

@@ -1,0 +1,81 @@
+.form {
+	position: relative;
+	img {
+		width: 100%;
+		height: 100vh;
+		background: center cover;
+	}
+	.main-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&.signup {
+			form {
+				width: 650px !important;
+				.gr-input {
+					width: 45%;
+				}
+			}
+		}
+		form {
+			width: 400px;
+			background: rgba(255, 255, 255, 0.8);
+			border-radius: 10px;
+			padding: 15px 50px;
+			text-align: center;
+			h4 {
+				@include text($color-se-1, $fs-md-lg, $fw-bold-2);
+			}
+			button {
+				margin: 20px 0;
+				color: var(--color);
+				transition: 0.2s;
+				border: 2px solid;
+				background: transparent;
+				padding: 5px 30px;
+				font-weight: $fw-bold-1;
+				font-family: $font-title;
+				letter-spacing: 1px;
+				&:hover,
+				&:focus {
+					border-color: $color-pr-1;
+					color: $color-pr-1;
+				}
+			}
+			.go-to-form-another {
+				display: block;
+				@include text($color-pr-1, $fs-sm, normal);
+				text-decoration: none;
+				font-size: 15px;
+				&:hover {
+					color: $color-pr-2;
+				}
+			}
+		}
+	}
+}
+.pulse:hover,
+.pulse:focus {
+	animation: pulse 1s infinite;
+	box-shadow: 0 0 0 15px transparent;
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 $color-pr-1;
+	}
+}
+$colors: (
+	pulse: $color-pr-2,
+);
+@each $button, $color in $colors {
+	.#{$button} {
+		--color: #{$color};
+		--hover: #{adjust-hue($color, 45deg)};
+	}
+}

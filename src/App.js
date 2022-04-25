@@ -1,5 +1,7 @@
 import Footer from 'components/Footer/Footer';
 import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
+import Login from 'features/Auth/components/Login';
+import Register from 'features/Auth/components/Register';
 import ProductFuture from 'features/Product';
 import Home from 'features/Product/pages/Home';
 import PageNotFound from 'features/Product/pages/PageNotFound';
@@ -17,16 +19,15 @@ function App() {
             <ScrollToTop />
             <div className='app'>
                 <header className='App-header'>
-                    <Header />
-                </header>
-                <header>
                     <HeaderChange />
                 </header>
                 <Switch>
                     <Route path="/" exact>
                         <Home />
                     </Route>
-
+                    {/* <Route path="/search/:keyword" component={ProductFuture} /> */}
+                    <Route path="/sign-in" component={Login} />
+                    <Route path="/sign-up" component={Register} />
                     <Route path="/products" component={ProductFuture} />
                     <Route path="/cart" component={CartFeature} />
                     <Route path='' exact={false} component={PageNotFound} />

@@ -1,18 +1,34 @@
 import { unwrapResult } from "@reduxjs/toolkit";
-import { useSnackbar } from "notistack";
 import React from "react";
 import { useDispatch } from "react-redux";
 import RegisterForm from "../RegisterForm";
 import { register } from "../userSlice";
-import PropTypes from "prop-types";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
-Register.propTypes = {
-  closeDialog: PropTypes.func,
+const successApi = (strSuccess) => {
+  return Swal.fire({
+    position: "center",
+    icon: "success",
+    html: `<h3 style="color:#a5dc86"><b>SUCCESS!</b></h3><b>${strSuccess}</b>`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+const errorApi = (err) => {
+  return Swal.fire({
+    position: "center",
+    icon: "error",
+    html: `<h3 style="color:#f27474"><b>ERROR!</b></h3><b>${err}</b>`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
 };
 
 function Register(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (values) => {
     try {
@@ -23,15 +39,11 @@ function Register(props) {
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
 
-      const { closeDialog } = props;
-      if (closeDialog) {
-        closeDialog();
-      }
-
-      enqueueSnackbar("Register successfully!", { variant: "success" });
-    } catch (error) {
-      console.log("Failed", error);
-      enqueueSnackbar(error.message, { variant: "error" });
+      successApi("ĐĂNG KÝ THÀNH CÔNG.");
+      history.push("/sign-in");
+    } catch (err) {
+      errorApi("EMAIL ĐÃ TỒN TẠI.");
+      history.push("/sign-up");
     }
   };
 

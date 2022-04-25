@@ -1,18 +1,7 @@
-import {
-  Badge,
-  Box,
-  DialogContent,
-  IconButton,
-  Menu,
-  MenuItem,
-} from "@material-ui/core";
+import { Badge, IconButton, Menu, MenuItem } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import { AccountCircle, Close, ShoppingCart } from "@material-ui/icons";
-import Login from "features/Auth/components/Login";
-import Register from "features/Auth/components/Register";
+import { AccountCircle, ShoppingCart } from "@material-ui/icons";
 import { logout } from "features/Auth/components/userSlice";
 import { cartItemsCountSelector } from "features/Cart/selectors";
 import React, { useState } from "react";
@@ -21,15 +10,10 @@ import { NavLink, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: "absolute",
     zIndex: 999,
     marginBottom: "20px",
-  },
-  closeButton: {
-    position: "absolute",
-    top: theme.spacing(1),
-    right: theme.spacing(1),
-    color: theme.palette.grey[500],
-    zIndex: 1,
+    background: "transparent",
   },
 
   navBarSolid: {
@@ -38,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   navBarTransparent: {
-    position: "fixed",
     width: "100%",
     zIndex: 999,
     top: 0,
@@ -67,17 +50,8 @@ export default function Header() {
   const cartItemsCount = useSelector(cartItemsCountSelector);
   const isLoggedIn = !!loggedInUser.id;
   const history = useHistory();
-  const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
   const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleUserClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -96,11 +70,15 @@ export default function Header() {
     history.push("/cart");
   };
 
+  const savePrevPage = () => {
+    localStorage.setItem("prevPage", JSON.stringify(window.location.pathname));
+  };
+
   return (
     <AppBar className={classes.root}>
       <nav className="navbar navbar-expand-sm">
         <NavLink className="navbar-brand" to="/">
-          <h1>INTERN-SHOP</h1>
+          <h1>TMN-SHOP</h1>
         </NavLink>
         <button
           className="navbar-toggler d-lg-none"
@@ -134,9 +112,18 @@ export default function Header() {
         </div>
         <div className="lg">
           {!isLoggedIn && (
-            <Button color="inherit" onClick={handleClickOpen}>
-              Login
-            </Button>
+            <div className="account">
+              <NavLink
+                className="btn--blue bttn "
+                to="/sign-in"
+                onClick={savePrevPage}
+              >
+                SIGN IN
+              </NavLink>
+              <NavLink className="signup btn--black bttn " to="/sign-up">
+                SIGN UP
+              </NavLink>
+            </div>
           )}
 
           <IconButton
@@ -152,6 +139,12 @@ export default function Header() {
           {isLoggedIn && (
             <IconButton color="inherit" onClick={handleUserClick}>
               <AccountCircle />
+              <div
+                className="name-user"
+                style={{ fontSize: "15px", marginLeft: "5px" }}
+              >
+                {loggedInUser.fullName}
+              </div>
             </IconButton>
           )}
         </div>
@@ -175,52 +168,6 @@ export default function Header() {
             <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
             <MenuItem onClick={handleLoggoutClick}>Logout</MenuItem>
           </Menu>
-        </div>
-
-        <div class="dialog">
-          <Dialog
-            disableBackdropClick
-            disableEscapeKeyDown
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="form-dialog-title"
-          >
-            <IconButton className={classes.closeButton} onClick={handleClose}>
-              <Close />
-            </IconButton>
-
-            <DialogContent>
-              {mode === MODE.REGISTER && (
-                <>
-                  <Register closeDialog={handleClose} />
-
-                  <Box textAlign={"center"}>
-                    <Button
-                      color={"primary"}
-                      onClick={() => setMode(MODE.LOGIN)}
-                    >
-                      Already have an account. Login here
-                    </Button>
-                  </Box>
-                </>
-              )}
-
-              {mode === MODE.LOGIN && (
-                <>
-                  <Login closeDialog={handleClose} />
-
-                  <Box textAlign={"center"}>
-                    <Button
-                      color={"primary"}
-                      onClick={() => setMode(MODE.REGISTER)}
-                    >
-                      Don't have an account. Register here
-                    </Button>
-                  </Box>
-                </>
-              )}
-            </DialogContent>
-          </Dialog>
         </div>
       </nav>
     </AppBar>

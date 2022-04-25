@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container">
         <div className="main-content">
           <div className="logo-title">
-            <h1>INTERN-SHOP</h1>
+            <h1>TMN-SHOP</h1>
           </div>
           <div className="row">
             <div className="col-4 chinh-sach">

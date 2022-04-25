@@ -6,6 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Controller } from "react-hook-form";
@@ -45,8 +46,9 @@ function PasswordField(props) {
               aria-label="toggle password visibility"
               onClick={toggleShowPassword}
               edge="end"
+              style={{ border: "none", paddingRight: "0px" }}
             >
-              {showPassword ? <Visibility /> : <VisibilityOff />}
+              {showPassword ? <VisibilityIcon /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
         }

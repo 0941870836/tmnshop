@@ -1,18 +1,13 @@
-import React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, LinearProgress, makeStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
+import React from "react";
+import { useForm } from "react-hook-form";
+
+import { NavLink } from "react-router-dom";
+import * as yup from "yup";
 import InputField from "../../../../components/form-control/InputField";
 import PasswordField from "../../../../components/form-control/PasswordField";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import {
-  Avatar,
-  Button,
-  Typography,
-  makeStyles,
-  LinearProgress,
-} from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -99,32 +94,49 @@ function RegisterForm(props) {
   return (
     <div className={classes.root}>
       {isSubmitting && <LinearProgress className={classes.progress} />}
-      <Avatar className={classes.avatar}>
-        <LockOutlined></LockOutlined>
-      </Avatar>
-      <Typography className={classes.title} component="h3" variant="h5">
-        Create An Account
-      </Typography>
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <InputField name="fullName" label="Full Name" form={form} />
-        <InputField name="email" label="Email" form={form} />
-        <PasswordField name="password" label="Password" form={form} />
-        <PasswordField
-          name="retypePassword"
-          label="Retype Password"
-          form={form}
-        />
-        <Button
-          disable={isSubmitting}
-          type="submit"
-          className={classes.submit}
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          CREATE AN ACCOUNT
-        </Button>
-      </form>
+      <section className="form">
+        <img src="../img/bg-01.jpg" />
+        <div className="main-content signup">
+          <form onSubmit={form.handleSubmit(handleSubmit)}>
+            <h4>SIGN UP</h4>
+            <div className="d-flex justify-content-between">
+              <div className="gr-input border-right">
+                <div>
+                  <InputField name="fullName" label="Full Name" form={form} />
+                </div>
+                <div>
+                  <InputField name="email" label="Email" form={form} />
+                </div>
+              </div>
+              <div className="gr-input">
+                <div>
+                  <PasswordField name="password" label="Password" form={form} />
+                </div>
+                <div>
+                  <PasswordField
+                    name="retypePassword"
+                    label="Retype Password"
+                    form={form}
+                  />
+                </div>
+              </div>
+            </div>
+            <Button
+              disable={isSubmitting}
+              className="pulse"
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+            >
+              CREATE AN ACCOUNT
+            </Button>
+            <NavLink className="go-to-form-another" to="/sign-in">
+              Bạn đã có tài khoản?
+            </NavLink>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }
