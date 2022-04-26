@@ -11,11 +11,9 @@ export default function Intro() {
       <div className="content">
         <div>
           <h3 className="head-title">
-            Getting started with <b>ITERN-SHOP</b>
+            Getting started with <b>TMN-SHOP</b>
           </h3>
-          <p className="head-subtitle">
-            ITERN-SHOP very happy when your visit to page
-          </p>
+          <p className="head-subtitle"></p>
           {/* <Route render={({ history }) => <Search history={history} />} /> */}
         </div>
       </div>

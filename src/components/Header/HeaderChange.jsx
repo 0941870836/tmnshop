@@ -11,9 +11,9 @@ import { NavLink, useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
-    zIndex: 999,
+    zIndex: 1,
     marginBottom: "20px",
-    background: "transparent",
+    background: "#041B2D",
   },
 
   navBarSolid: {

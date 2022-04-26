@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
-  Avatar,
   Button,
   Checkbox,
   LinearProgress,
@@ -77,7 +76,6 @@ function LoginForm(props) {
   return (
     <div className={classes.root}>
       {isSubmitting && <LinearProgress className={classes.progress} />}
-      <Avatar className={classes.avatar}></Avatar>
       <section className="form">
         <img src="../img/bg-01.jpg" />
         <div className="main-content">

@@ -1,11 +1,6 @@
 .nav-link {
   color: white !important;
 }
-header {
-  &#changeBackground {
-    background: #2459ab;
-  }
-}
 
 .navbar {
   padding: 0 100px;
@@ -22,6 +17,44 @@ header {
       font-family: "Grenze", serif;
     }
   }
+    .lg{
+      display: flex;
+      align-items: center;
+        a{
+          margin-right: 20px;
+          letter-spacing: 1px;
+          text-decoration: none;
+        }
+        .btn--blue{
+          color: #fff;
+          font-size: 15px;
+          background: #18c1f0;
+          border-radius: 3px;
+          padding: 10px 25px;
+          letter-spacing: 1px;
+          border: 0;
+          &:hover{
+            color: #fff;
+            background-color: #18aaf0;
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.166), 0 4px 15px 0 rgba(0, 0, 0, 0.146);
+          }
+        }
+        .btn--black {
+          color: #fff;
+          font-size: 15px;
+          background: rgba(0,0,0,.6);
+          border-radius: 3px;
+          padding: 10px 25px;
+          letter-spacing: 1px;
+          text-decoration: none!important;
+          border: 0;
+          &:hover{
+            color: #fff;
+            background-color: rgba(0,0,0,.8);
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.166), 0 4px 15px 0 rgba(0, 0, 0, 0.146);
+          }
+      }
+    }
   .navbar-nav {
     padding-bottom: 7px;
     margin-left: 20px;
